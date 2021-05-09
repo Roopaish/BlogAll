@@ -1,0 +1,145 @@
+/* Variables */
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  background-color: #000000;
+  color: white;
+  font-size: 1.6rem;
+  margin: 0 1rem;
+}
+
+html {
+  font-size: 10px;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1 {
+  font-weight: 400;
+  font-size: 5rem;
+  margin-bottom: 2rem;
+}
+
+h2 {
+  font-weight: 300;
+  font-size: 2.6rem;
+  margin-bottom: 2rem;
+}
+
+h3 {
+  font-weight: 200;
+  font-size: 2.3rem;
+  margin-bottom: 2rem;
+}
+
+@media screen and (max-width: 740px) {
+  h1 {
+    font-size: 3.8rem;
+  }
+  h2 {
+    font-size: 2.6rem;
+  }
+  h3 {
+    font-size: 1.8rem;
+  }
+}
+
+@media screen and (min-width: 740px) {
+  h3 {
+    font-size: 1.8rem;
+  }
+}
+
+button {
+  cursor: pointer;
+  padding: 0.6rem 1.1rem;
+  border: none;
+  border-radius: 0.4rem;
+  color: white;
+  font-size: 1.6rem;
+  background-color: #e50914;
+}
+
+input {
+  font-size: 1.8rem;
+  padding: 0.5rem 1rem;
+  margin-bottom: 2rem;
+}
+
+/* Navigation Bar */
+nav {
+  background-color: #000000;
+  color: #908e8c;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border-bottom: 4px solid #222222;
+}
+
+nav ul {
+  font-size: 18px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+nav ul li {
+  cursor: pointer;
+  padding: 0 1rem;
+}
+
+nav header {
+  text-transform: uppercase;
+  color: #e50914;
+}
+
+nav header img {
+  height: 3.3rem;
+}
+
+.landing-page-body {
+  text-align: center;
+  height: 50rem;
+  padding-top: 10rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+/*# sourceMappingURL=style.css.map */
