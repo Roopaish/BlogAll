@@ -45,6 +45,24 @@ h3 {
   margin-bottom: 2rem;
 }
 
+@media screen and (max-width: 740px) {
+  h1 {
+    font-size: 3.8rem;
+  }
+  h2 {
+    font-size: 2.6rem;
+  }
+  h3 {
+    font-size: 1.8rem;
+  }
+}
+
+@media screen and (min-width: 740px) {
+  h3 {
+    font-size: 1.8rem;
+  }
+}
+
 button {
   cursor: pointer;
   padding: 0.6rem 1.1rem;
@@ -66,7 +84,7 @@ button {
 }
 
 .input-wrap input:focus {
-  border: 1px solid #0071EB;
+  border: 1px solid #0071eb;
 }
 
 .input-wrap label {
@@ -163,9 +181,21 @@ nav header img {
   width: 100%;
 }
 
-@media screen and (max-width: 700px) {
-  html {
-    font-size: 9px;
+@media screen and (min-width: 700px) {
+  .landing-page-body form input {
+    font-size: 4rem;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .landing-page-body form label {
+    font-size: 2.4rem;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .landing-page-body form button {
+    font-size: 2.4rem;
   }
 }
 /*# sourceMappingURL=style.css.map */
