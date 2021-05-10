@@ -147,7 +147,7 @@ nav header img {
   height: 3.3rem;
 }
 
-.landing-page-body {
+.landing-page-body, .signUpIn {
   text-align: center;
   height: 50rem;
   padding-top: 10rem;
@@ -163,7 +163,7 @@ nav header img {
           justify-content: flex-end;
 }
 
-.landing-page-body form {
+.landing-page-body form, .signUpIn form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -175,27 +175,65 @@ nav header img {
   margin-bottom: 2rem;
 }
 
-.landing-page-body form input {
+.landing-page-body form input, .signUpIn form input {
   font-size: 1.8rem;
   padding: 0.7rem 1rem;
   width: 100%;
 }
 
 @media screen and (min-width: 700px) {
-  .landing-page-body form input {
+  .landing-page-body form input, .signUpIn form input {
     font-size: 4rem;
   }
 }
 
 @media screen and (min-width: 700px) {
-  .landing-page-body form label {
+  .landing-page-body form label, .signUpIn form label {
     font-size: 2.4rem;
   }
 }
 
 @media screen and (min-width: 700px) {
-  .landing-page-body form button {
+  .landing-page-body form button, .signUpIn form button {
     font-size: 2.4rem;
   }
+}
+
+.signUpIn {
+  margin: 0 auto;
+  max-width: 749px;
+}
+
+.signUpIn form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 80%;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.signUpIn input {
+  margin-bottom: 2rem;
+}
+
+.signUpIn button {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+.signUpIn label {
+  margin-top: 2.5%;
+}
+
+.error {
+  color: #e50914;
+  margin-bottom: 2rem;
 }
 /*# sourceMappingURL=style.css.map */

@@ -1,16 +1,33 @@
 // Animating Placeholder
-const inputEl = document.querySelector(".input-wrap input")
-const labelEl = document.querySelector(".input-wrap label")
+const inputEl = document.querySelectorAll(".input-wrap input")
+const labelEl = document.querySelectorAll(".input-wrap label")
 
-inputEl.addEventListener("focus", () => {
-  labelEl.classList.add("shift-place")
-})
-inputEl.addEventListener("blur", () => {
+for (let i = 0; i < inputEl.length; i++) {
+  
+  inputEl[i].addEventListener("focus", () => {
+    labelEl[i].classList.add("shift-place")
+  })
+
+  inputEl[i].addEventListener("blur", () => {
+    if (
+      inputEl[i].value == "" ||
+      inputEl[i].value == null ||
+      inputEl[i].value == undefined
+    ) {
+      labelEl[i].classList.remove("shift-place")
+    }
+  })
+
+  //On page revisit
   if (
-    (inputEl.value == "" ||
-    inputEl.value == null ||
-    inputEl.value == undefined) 
+    !(
+      inputEl[i].value == "" ||
+      inputEl[i].value == null ||
+      inputEl[i].value == undefined
+    )
   ) {
-    labelEl.classList.remove("shift-place")
+    labelEl[i].classList.add("shift-place")
   }
-})
+}
+
+//
