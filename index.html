@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BlogAll</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="shortcut icon" type="image/png" href="./img/logo.png"/>
 </head>
 
 <body>
@@ -16,7 +17,9 @@
 
     <nav>
       <header>
-        <img src="./img/blogall.png" alt="blogall-logo" />
+        <a href="#">
+          <img src="./img/blogall.png" alt="blogall-logo" />
+        </a>
       </header>
 
       <ul>
@@ -27,16 +30,22 @@
     </nav>
 
     <main class="landing-page-body">
-      <h1>Unlimited Blogs and more.</h1>
+      <h1>Unlimited blogs and more.</h1>
       <h2>Read anywhere. Post anytime.</h2>
       <h3>Ready to be a blogger? Enter your email to create or restart your blogship.
       </h3>
-      <p class="input-wrap">
-        <input type="email" name="email" class="email">
-        <label for="email">email</label>
-      </p>
-      <button>Get Started ></button>
+
+      <form>
+        <p class="input-wrap">
+          <label for="email">Email Address</label>
+          <input type="email" name="email" id="email">
+        </p>
+        <button>Get Started ></button>
+      </form>
+
     </main>
+
+
   </section>
 
   <script src="app.js"></script>

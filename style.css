@@ -45,24 +45,6 @@ h3 {
   margin-bottom: 2rem;
 }
 
-@media screen and (max-width: 740px) {
-  h1 {
-    font-size: 3.8rem;
-  }
-  h2 {
-    font-size: 2.6rem;
-  }
-  h3 {
-    font-size: 1.8rem;
-  }
-}
-
-@media screen and (min-width: 740px) {
-  h3 {
-    font-size: 1.8rem;
-  }
-}
-
 button {
   cursor: pointer;
   padding: 0.6rem 1.1rem;
@@ -73,10 +55,33 @@ button {
   background-color: #e50914;
 }
 
-input {
-  font-size: 1.8rem;
-  padding: 0.5rem 1rem;
-  margin-bottom: 2rem;
+.input-wrap {
+  position: relative;
+}
+
+.input-wrap input {
+  border: 1px solid #908e8c;
+  border-radius: 0.2rem;
+  outline: none;
+}
+
+.input-wrap input:focus {
+  border: 1px solid #0071EB;
+}
+
+.input-wrap label {
+  color: #908e8c;
+  position: absolute;
+  top: 0;
+  left: 1.1rem;
+  margin-top: 3.5%;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+.input-wrap .shift-place {
+  font-size: 1rem;
+  margin-top: 0rem;
 }
 
 /* Navigation Bar */
@@ -135,11 +140,32 @@ nav header img {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
+}
+
+.landing-page-body form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.landing-page-body form input {
+  font-size: 1.8rem;
+  padding: 0.7rem 1rem;
+  width: 100%;
+}
+
+@media screen and (max-width: 700px) {
+  html {
+    font-size: 9px;
+  }
 }
 /*# sourceMappingURL=style.css.map */
