@@ -1,48 +1,136 @@
 <?php
+// Variables
+
+$email = "";
+$name = "";
+$password = "";
+$error = "";
+$success = "";
+$from_signIn = false;
+$from_signUp = false;
+$sign_in = false;
+
+// From Landing Page
+
 if($_SERVER['REQUEST_METHOD'] == "POST" ){
    $email = $_POST['email'];
-}else{
-  $email = "";
 }
 
 if(isset($_POST['signInUI'])){
   $from_signIn = true;
-}else{
-  $from_signIn = false;
 }
 
 if(isset($_POST['signUpUI'])){
   $from_signUp = true;
-}else{
-  $from_signUp = false;
 }
 
-$name = "";
-$password = "";
-if(isset($_POST['signUp'])){
-  $email = $_POST['email'];
-  $name = $_POST['name'];
-  $password = $_POST['password'];
+/* Database Creation*/
 
-  if(!preg_match("/([A-Za-z ]+){5,}/", $name)){
-    $error = "Please enter a valid name!";
-  }else{
-    $error = "";
+//Commented code is to run once to create database and tables
+
+//Creating Database
+
+require_once("connect.php");
+
+// $sql = "CREATE DATABASE usersauth";
+// $result = mysqli_query($connection, $sql);
+
+// if(!$result){
+//   echo "Error! ",mysqli_error($connection);
+// }
+
+//select database
+
+$db = mysqli_select_db($connection, "usersauth");
+
+if($_SERVER['REQUEST_METHOD']=="POST"){
+
+  /* Signing up */
+
+  if(isset($_POST['signUp'])){
+    $email = $_POST['email'];
+    $name = $_POST['name'];
+    $password = $_POST['password'];
+    $flag = 0;
+
+    if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+      $flag = 1;
+      $error .= "Please enter a vaild email!<br/>";
+    }else{
+
+      $emaildb = "SELECT email FROM users";
+      $result = mysqli_query($connection, $emaildb);
+
+      while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+        if($row['email'] == $email){
+          $flag = 1;
+          $error .= "Email already taken!<br/>";
+        }
+      }
+
+    }
+
+    if(!preg_match("/([A-Za-z ]+){5,}/", $name)){
+      $flag = 1;
+      $error .= "Please enter a valid name!<br/>";
+    }
+
+    if(!preg_match("/[\w\W]{6,12}/", $password)){
+      $flag = 1;
+      $error .= "Please enter password of 6 to 12 characters long!";
+    }
+    
+    
+    if($flag == 0){
+      $error = "";
+
+      if(!$db){
+        echo "Connection Failed! ",mysqli_error($connection);
+      }else{
+
+        //Creating table columns(headings)
+
+        // $sql = "CREATE TABLE users(
+        //   id INT(6) PRIMARY KEY AUTO_INCREMENT,
+        //   username TEXT(30),
+        //   email VARCHAR(30),
+        //   password VARCHAR(20)
+        // )";
+
+
+        //Inserting Values
+        
+        $sql = "INSERT INTO users(
+          username, email, password
+        )
+        VALUES('$name', '$email', '$password')";
+
+        $result = mysqli_query($connection, $sql);
+
+        if(!$result){
+          echo "Error! ",mysqli_error($connection);
+        }
+      }
+
+    }
   }
 }
+
+
+/* Signing in */
 
 if(isset($_POST['signIn'])){
   $email = $_POST['email'];
   $password = $_POST['password'];
 
   if(!1){
-    $error = "Please enter a valid name!";
+    $error = "Wrong Password or Email!";
   }else{
     $error = "";
   }
 }
 
-$sign_in = false;
+/* to store Html Code */
 
 $sign_up_body = '
             <span class="error">'.$error.'</span>
@@ -94,7 +182,7 @@ $sign_in_body = '
   </head>
 
   <body>
-    <nav>
+    <!-- <nav>
         <header>
           <a href="#">
             <img src="./img/blogall.png" alt="blogall-logo" />
@@ -104,7 +192,7 @@ $sign_in_body = '
         <ul>
           <li><button>Discover</button></li>
         </ul>
-    </nav>
+    </nav> -->
 
 
     <main class="signUpIn">
