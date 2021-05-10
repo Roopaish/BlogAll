@@ -8,13 +8,8 @@ $error = "";
 $success = "";
 $from_signIn = false;
 $from_signUp = false;
-$sign_in = false;
 
 // From Landing Page
-
-if($_SERVER['REQUEST_METHOD'] == "POST" ){
-   $email = $_POST['email'];
-}
 
 if(isset($_POST['signInUI'])){
   $from_signIn = true;
@@ -22,6 +17,7 @@ if(isset($_POST['signInUI'])){
 
 if(isset($_POST['signUpUI'])){
   $from_signUp = true;
+  $email = $_POST['email'];
 }
 
 /* Database Creation*/
@@ -64,7 +60,10 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
       while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
         if($row['email'] == $email){
           $flag = 1;
-          $error .= "Email already taken!<br/>";
+          $error .= 'Email already taken!
+                    <form id="signInUI" action="" method="POST" style="flex-direction:row;">
+                      <button name="signInUI" class="notStyledBtn">Sign In</button>&nbsp;instead.
+                    </form>';
         }
       }
 
@@ -109,31 +108,57 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
 
         if(!$result){
           echo "Error! ",mysqli_error($connection);
+        }else{
+          $success = "Account Created!";
         }
       }
 
     }
   }
-}
 
+    /* Signing in */
 
-/* Signing in */
+  if(isset($_POST['signIn'])){
+    $from_signIn = true;
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $index = 0;
+    $flag = 1;
 
-if(isset($_POST['signIn'])){
-  $email = $_POST['email'];
-  $password = $_POST['password'];
+    $authdb = "SELECT email, password FROM users";
+    $result = mysqli_query($connection, $authdb);
 
-  if(!1){
-    $error = "Wrong Password or Email!";
-  }else{
-    $error = "";
+    while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+      if($row['email'] == $email){
+        $flag = 2;
+        if($row['password'] == $password){
+          $flag = 0;
+          $success = "Authenticated!";
+          }
+        break;
+        }
+      }
+
+    if($flag == 1){
+      $error = 'Email is not taken!
+                <form id="signUpUI" action="" method="POST" style="flex-direction:row;">
+                  <button name="signUpUI" class="notStyledBtn">Sign Up</button>&nbsp;instead.
+                </form>
+      ';
+    }elseif($flag == 2){
+      $error = "Email or password is incorrect!";
+    }
+
   }
 }
+
+mysqli_close($connection);
 
 /* to store Html Code */
 
 $sign_up_body = '
             <span class="error">'.$error.'</span>
+            <span class="success">'.$success.'</span>
             <form method="POST">
               <p class="input-wrap">
                   <label for="email">Email</label>
@@ -150,12 +175,13 @@ $sign_up_body = '
                 <input type="password" name="password" id="password" value="'.$password.'" required>
               </p>
               
-              <button name="signUp">Sign Up</button>
+              <button name="signUp" class="styledBtn">Sign Up</button>
             </form>
 ';
 
 $sign_in_body = '
             <span class="error">'.$error.'</span>
+            <span class="success">'.$success.'</span>
             <form method="POST">
 
               <p class="input-wrap">
@@ -168,7 +194,7 @@ $sign_in_body = '
                 <input type="password" name="password" id="password" required>
               </p>
 
-              <button name="signIn">Sign In</button>
+              <button name="signIn" class="styledBtn">Sign In</button>
             </form>
 ';
 
@@ -182,7 +208,7 @@ $sign_in_body = '
   </head>
 
   <body>
-    <!-- <nav>
+    <nav>
         <header>
           <a href="#">
             <img src="./img/blogall.png" alt="blogall-logo" />
@@ -190,23 +216,18 @@ $sign_in_body = '
         </header>
 
         <ul>
-          <li><button>Discover</button></li>
+          <li><button class="styledBtn">Discover</button></li>
         </ul>
-    </nav> -->
+    </nav>
 
 
     <main class="signUpIn">
       <?php 
-        if(!$sign_in){
+        if(!$from_signIn){
           echo $sign_up_body;
               
         }else{
-          if($from_signUp){
-            echo '<h1>You already have an account! Sign In instead</h1>';
-          }
-          if($from_signIn){
-            echo '<h1>Welcome back!</h1>';
-          }
+          echo '<h1>Welcome back!</h1>';
           echo $sign_in_body;
         }
     ?>

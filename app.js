@@ -30,4 +30,3 @@ for (let i = 0; i < inputEl.length; i++) {
   }
 }
 
-//

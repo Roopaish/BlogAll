@@ -4,6 +4,7 @@ $bg: #000000;
 $bright: #e50914;
 $light: #908e8c;
 $border: #222222;
+$bright2: rgb(10, 255, 235);
 
 /* Reset */
 
@@ -69,7 +70,7 @@ h3 {
   }
 }
 
-button {
+.styledBtn {
   cursor: pointer;
   padding: 0.6rem 1.1rem;
   border: none;
@@ -77,6 +78,16 @@ button {
   color: white;
   font-size: 1.6rem;
   background-color: $bright;
+}
+
+.notStyledBtn {
+  cursor: pointer;
+  border: none;
+  color: $bright2;
+  background-color: transparent;
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 .input-wrap {
@@ -160,7 +171,7 @@ nav {
         font-size: 2.4rem;
       }
     }
-    button {
+    .styledBtn {
       @media screen and (min-width: 700px) {
         font-size: 2.4rem;
       }
@@ -168,31 +179,41 @@ nav {
   }
 }
 
-
-.signUpIn{
+.signUpIn {
   @extend .landing-page-body;
   margin: 0 auto;
   max-width: 749px;
-  form{
+  form {
     display: flex;
     flex-direction: column;
-    width:80%;
+    width: 80%;
     max-width: 500px;
     margin-left: auto;
     margin-right: auto;
   }
-  input{
+  input {
     margin-bottom: 2rem;
   }
-  button{
+  .styledBtn {
     align-self: center;
   }
-  label{
+  label {
     margin-top: 2.5%;
   }
 }
 
-.error{
+.error {
   color: $bright;
   margin-bottom: 2rem;
+}
+.success {
+  color: $bright2;
+  margin-bottom: 2rem;
+}
+
+a {
+  color: $bright2;
+  &:hover {
+    text-decoration: underline;
+  }
 }
