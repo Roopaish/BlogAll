@@ -8,7 +8,7 @@
   $i = 0;
 
 
-  $profile = "";
+  $profile = "B";
   $useremail = "";
   $username = "";
   $userpassword = "";
@@ -21,6 +21,7 @@
     header('Location: index.php');
   }{
     $username = $_COOKIE['username'];
+    $profile = strtoupper($username[0]);
     $db = mysqli_select_db($connection, "usersauth");
 
     if(isset($_POST['createblog'])){
@@ -119,7 +120,7 @@
             </form>
 
           </li>
-          <li><button class="styledBtn profile" >RB</button></li>
+          <li><button class="styledBtn profile" ><?php echo $profile ?></button></li>
         </ul>
     </nav>
 
