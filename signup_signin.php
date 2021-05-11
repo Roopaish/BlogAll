@@ -30,7 +30,7 @@ if(isset($_COOKIE['useremail']) && isset($_COOKIE['userpassword'])){
 
 require_once("connect.php");
 
-// $sql = "CREATE DATABASE usersauth";
+// $sql = "CREATE DATABASE rupeshbudhathoki_usersauth";
 // $result = mysqli_query($connection, $sql);
 
 // if(!$result){
@@ -39,7 +39,7 @@ require_once("connect.php");
 
 //select database
 
-$db = mysqli_select_db($connection, "usersauth");
+$db = mysqli_select_db($connection, "rupeshbudhathoki_usersauth");
 
 if($_SERVER['REQUEST_METHOD']=="POST"){
 

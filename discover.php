@@ -22,7 +22,7 @@
   }{
     $username = $_COOKIE['username'];
     $profile = strtoupper($username[0]);
-    $db = mysqli_select_db($connection, "usersauth");
+    $db = mysqli_select_db($connection, "rupeshbudhathoki_usersauth");
 
     if(isset($_POST['createblog'])){
       $heading = $_POST['heading'];
