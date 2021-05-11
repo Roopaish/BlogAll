@@ -1,5 +1,5 @@
 // Animating Placeholder
-const inputEl = document.querySelectorAll(".input-wrap input")
+const inputEl = document.querySelectorAll(".input-wrap input, .input-wrap textarea")
 const labelEl = document.querySelectorAll(".input-wrap label")
 
 for (let i = 0; i < inputEl.length; i++) {
@@ -30,3 +30,14 @@ for (let i = 0; i < inputEl.length; i++) {
   }
 }
 
+// New Blog
+const newBlogBtn = document.getElementById('newBlogBtn');
+const newblog = document.getElementById('newblog');
+newBlogBtn.addEventListener('click',()=>{
+  newblog.classList.toggle('hide');
+})
+
+// prevent form submission message
+if ( window.history.replaceState ) {
+  window.history.replaceState( null, null, window.location.href );
+}

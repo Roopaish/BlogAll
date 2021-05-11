@@ -7,7 +7,6 @@ $password = "";
 $error = "";
 $success = "";
 $from_signIn = false;
-$from_signUp = false;
 
 // From Landing Page
 
@@ -16,8 +15,11 @@ if(isset($_POST['signInUI'])){
 }
 
 if(isset($_POST['signUpUI'])){
-  $from_signUp = true;
   $email = $_POST['email'];
+}
+
+if(isset($_COOKIE['useremail']) && isset($_COOKIE['userpassword'])){
+  header("Location: discover.php");
 }
 
 /* Database Creation*/
@@ -64,14 +66,29 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
                     <form id="signInUI" action="" method="POST" style="flex-direction:row;">
                       <button name="signInUI" class="notStyledBtn">Sign In</button>&nbsp;instead.
                     </form>';
+          break;
         }
       }
 
     }
 
-    if(!preg_match("/([A-Za-z ]+){5,}/", $name)){
+    if(!preg_match("/[\w\W]{5,}/", $name)){
       $flag = 1;
-      $error .= "Please enter a valid name!<br/>";
+      $error .= "Please enter name of minimum 5 characters long!<br/>";
+    }else{
+      $namedb = "SELECT username FROM users";
+      $result = mysqli_query($connection, $namedb);
+
+      while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+        if($row['username'] == $name){
+          $flag = 1;
+          $error .= 'Username already taken!
+                    <form id="signInUI" action="" method="POST" style="flex-direction:row;">
+                      <button name="signInUI" class="notStyledBtn">Sign In</button>&nbsp;instead.
+                    </form>';
+          break;
+        }
+      }
     }
 
     if(!preg_match("/[\w\W]{6,12}/", $password)){
@@ -109,7 +126,14 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
         if(!$result){
           echo "Error! ",mysqli_error($connection);
         }else{
-          $success = "Account Created!";
+          $success = "Account Created!<br/>Redirecting...";
+          setcookie('useremail',$email, time() + (86400 * 30), "/") ;
+          setcookie('userpassword',$password, time() + (86400 * 30), "/") ;
+          setcookie('username',$name, time() + (86400 * 30), "/") ;
+
+          echo "<script>
+                  setTimeout(\"location.href = 'discover.php';\",1500);
+                </script>";
         }
       }
 
@@ -125,15 +149,23 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
     $index = 0;
     $flag = 1;
 
-    $authdb = "SELECT email, password FROM users";
+    $authdb = "SELECT * FROM users";
     $result = mysqli_query($connection, $authdb);
 
     while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
       if($row['email'] == $email){
         $flag = 2;
         if($row['password'] == $password){
+          $name = $row['username'];
           $flag = 0;
-          $success = "Authenticated!";
+          $success = "$name Authenticated!<br/>Redirecting...";
+          setcookie('useremail',$email, time() + (86400 * 30), "/");
+          setcookie('userpassword',$password, time() + (86400 * 30), "/");
+          setcookie('username',$name, time() + (86400 * 30), "/");
+          
+          echo "<script>
+                  setTimeout(\"location.href = 'discover.php';\",2000);
+                </script>";
           }
         break;
         }
@@ -157,16 +189,17 @@ mysqli_close($connection);
 /* to store Html Code */
 
 $sign_up_body = '
+            
             <span class="error">'.$error.'</span>
             <span class="success">'.$success.'</span>
-            <form method="POST">
+            <form action="" method="POST">
               <p class="input-wrap">
                   <label for="email">Email</label>
                   <input type="email" name="email" id="email" value="'.$email.'" required>
               </p>
 
               <p class="input-wrap">
-                <label for="name">Name</label>
+                <label for="name">Username</label>
                 <input type="text" name="name" id="name" value="'.$name.'" required>
               </p>
 
@@ -180,9 +213,10 @@ $sign_up_body = '
 ';
 
 $sign_in_body = '
+            
             <span class="error">'.$error.'</span>
             <span class="success">'.$success.'</span>
-            <form method="POST">
+            <form action="" method="POST" >
 
               <p class="input-wrap">
                   <label for="email">Email</label>
@@ -202,6 +236,9 @@ $sign_in_body = '
 
 <html>
   <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sing Up | Sign In</title>
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" type="image/png" href="./img/logo.png"/>
@@ -214,16 +251,13 @@ $sign_in_body = '
             <img src="./img/blogall.png" alt="blogall-logo" />
           </a>
         </header>
-
-        <ul>
-          <li><button class="styledBtn">Discover</button></li>
-        </ul>
     </nav>
 
 
     <main class="signUpIn">
       <?php 
         if(!$from_signIn){
+          // echo '<div style="padding-top:10rem;"></div>';
           echo $sign_up_body;
               
         }else{

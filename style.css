@@ -13,6 +13,7 @@ body {
   color: white;
   font-size: 1.6rem;
   margin: 0 1rem;
+  overflow-x: hidden;
 }
 
 html {
@@ -88,13 +89,13 @@ h3 {
   position: relative;
 }
 
-.input-wrap input {
+.input-wrap input, .input-wrap textarea {
   border: 1px solid #908e8c;
   border-radius: 0.2rem;
   outline: none;
 }
 
-.input-wrap input:focus {
+.input-wrap input:focus, .input-wrap textarea:focus {
   border: 1px solid #0071eb;
 }
 
@@ -114,6 +115,11 @@ h3 {
 }
 
 /* Navigation Bar */
+nav, main {
+  max-width: 1050px;
+  margin: 0 auto;
+}
+
 nav {
   background-color: #000000;
   color: #908e8c;
@@ -147,6 +153,14 @@ nav ul {
 nav ul li {
   cursor: pointer;
   padding: 0 1rem;
+}
+
+nav ul li .profile {
+  background-color: #0affeb;
+  color: #000000;
+  font-weight: 500;
+  overflow: hidden;
+  text-shadow: 0px 0px 10px;
 }
 
 nav header {
@@ -194,19 +208,19 @@ nav header img {
 
 @media screen and (min-width: 700px) {
   .landing-page-body form input, .signUpIn form input {
-    font-size: 4rem;
+    font-size: 2rem;
   }
 }
 
 @media screen and (min-width: 700px) {
   .landing-page-body form label, .signUpIn form label {
-    font-size: 2.4rem;
+    font-size: 2rem;
   }
 }
 
 @media screen and (min-width: 700px) {
   .landing-page-body form .styledBtn, .signUpIn form .styledBtn {
-    font-size: 2.4rem;
+    font-size: 2rem;
   }
 }
 
@@ -259,5 +273,89 @@ a {
 
 a:hover {
   text-decoration: underline;
+}
+
+.discover-posts {
+  padding-top: 10rem;
+}
+
+.discover-posts section {
+  max-width: 630px;
+}
+
+.discover-posts section article {
+  cursor: pointer;
+  margin: 1rem;
+  padding: 1rem;
+  background-color: #610000;
+  border-radius: 0.4rem;
+}
+
+.discover-posts section article h3 {
+  color: #e50914;
+  text-shadow: 0px 0px 10px red;
+}
+
+.discover-posts section article .author {
+  color: #ff9a56;
+  font-size: 1.4rem;
+}
+
+.discover-posts section article:hover {
+  background-color: #e50914;
+}
+
+.discover-posts section article:hover h3 {
+  color: #0affeb;
+}
+
+.discover-posts section article:hover .author {
+  color: #ffbb8e;
+}
+
+.discover-posts section article:hover p {
+  color: black;
+}
+
+.newblog {
+  height: 70vh;
+  background-color: transparent;
+}
+
+.newblog .newBlogForm {
+  padding: 1rem;
+  border-radius: 0.2rem;
+  position: absolute;
+  top: 8rem;
+  right: 0;
+  bottom: 0;
+  background-color: #005180;
+  width: 90%;
+  height: 100%;
+  max-width: 60rem;
+  height: 100%;
+  overflow-y: scroll;
+}
+
+.newblog .newBlogForm input {
+  width: 90%;
+  height: 5rem;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  border-radius: 0.2rem;
+}
+
+.newblog .newBlogForm textarea {
+  padding: 1rem;
+  width: 90%;
+  height: 40rem;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  border-radius: 0.2rem;
+}
+
+.hide {
+  display: none;
+  pointer-events: none;
 }
 /*# sourceMappingURL=style.css.map */
