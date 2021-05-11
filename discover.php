@@ -112,7 +112,7 @@
 
               <p class="input-wrap">
                 <label for="content">Content</label>
-                <textarea type="content" name="content" id="content" required></textarea>
+                <textarea type="content" name="content" id="content" required placeholder="         Use <br/> for line break! You can also use other HTML tags!(not recommended)"></textarea>
               </p>
               
               <button name="createblog" class="styledBtn">Create</button>
