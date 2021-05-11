@@ -158,7 +158,7 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
         if($row['password'] == $password){
           $name = $row['username'];
           $flag = 0;
-          $success = "$name Authenticated!<br/>Redirecting...";
+          $success = "Authenticated, Welcome $name!<br/>Redirecting...";
           setcookie('useremail',$email, time() + (86400 * 30), "/");
           setcookie('userpassword',$password, time() + (86400 * 30), "/");
           setcookie('username',$name, time() + (86400 * 30), "/");

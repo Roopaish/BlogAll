@@ -93,7 +93,8 @@ h3 {
 
 .input-wrap {
   position: relative;
-  input,textarea {
+  input,
+  textarea {
     border: 1px solid $light;
     border-radius: 0.2rem;
     outline: none;
@@ -116,7 +117,8 @@ h3 {
 }
 
 /* Navigation Bar */
-nav,main{
+nav,
+main {
   max-width: 1050px;
   margin: 0 auto;
 }
@@ -139,9 +141,9 @@ nav {
     li {
       cursor: pointer;
       padding: 0 1rem;
-      .profile{
+      .profile {
         background-color: $bright2;
-        color:$bg;
+        color: $bg;
         font-weight: 500;
         overflow: hidden;
         text-shadow: 0px 0px 10px;
@@ -230,68 +232,71 @@ a {
   }
 }
 
-.discover-posts{
+.discover-posts {
   padding-top: 10rem;
-  section{
-  max-width: 630px;
-  article{
-    cursor: pointer;
-    margin:1rem;
-    padding: 1rem;
-    background-color: rgb(97, 0, 0);
-    border-radius: 0.4rem;
-    h3{
-      color:$bright;
-      text-shadow: 0px 0px 10px rgb(255, 0, 0);
-    }
-    .author{
-      color: rgb(255, 154, 86);
-      font-size: 1.4rem;
-    }
+  section {
+    max-width: 630px;
+    article {
+      cursor: pointer;
+      margin: 1rem;
+      padding: 1rem;
+      background-color: rgb(97, 0, 0);
+      border-radius: 0.4rem;
+      h3 {
+        text-transform: uppercase;
+        color: white;
+        text-shadow: 0px 0px 10px red;
+      }
+      .author {
+        color: rgb(255, 154, 86);
+        font-size: 1.4rem;
+        margin-bottom: 0.5rem;
+      }
 
-    &:hover{
-      background-color: $bright;
-      h3{
-        color:$bright2;
-      }
-      .author{
-        color:rgb(255, 187, 142);
-      }
-      p{
-        color:rgb(0, 0, 0);
+      &:hover {
+        background-color: $bright;
+        h3 {
+          color: $bright2;
+          text-shadow: 0px 0px 10px black;
+        }
+        .author {
+          color: rgb(255, 187, 142);
+        }
+        p {
+          text-shadow: 0px 0px 4px black;
+        }
       }
     }
   }
 }
-}
 
-.newblog{
-  height:70vh;
+.newblog {
+  height: 70vh;
   background-color: transparent;
-  .newBlogForm{
-    padding:1rem;
+  .newBlogForm {
+    padding: 1rem;
     border-radius: 0.2rem;
     position: absolute;
-    top:8rem;
-    right:0;
-    bottom:0;
+    top: 8rem;
+    right: 0;
+    bottom: 0;
     background-color: rgb(0, 81, 128);
-    width:90%;
+    width: 90%;
     height: 100%;
     max-width: 60rem;
     height: 100%;
     overflow-y: scroll;
-    input{
-      width:90%;
-      height:5rem;
+    input {
+      width: 90%;
+      height: 5rem;
       margin-bottom: 2rem;
       font-size: 2rem;
       border-radius: 0.2rem;
     }
-    textarea{
+    textarea {
       padding: 1rem;
-      width:90%;
-      height:40rem;
+      width: 90%;
+      height: 40rem;
       margin-bottom: 2rem;
       font-size: 2rem;
       border-radius: 0.2rem;
@@ -299,7 +304,7 @@ a {
   }
 }
 
-.hide{
+.hide {
   display: none;
   pointer-events: none;
 }

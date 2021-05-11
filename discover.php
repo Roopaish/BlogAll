@@ -133,8 +133,9 @@
             <span class="error">'.$error.'</span>
             ';
 
-          while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {  
-            echo '
+          while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            $row['post'][0] = strtoupper($row['post'][0]);
+            echo ' 
            
             <article>
               <h3>'.$row['heading'].'</h3>

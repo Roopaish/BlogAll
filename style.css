@@ -89,13 +89,15 @@ h3 {
   position: relative;
 }
 
-.input-wrap input, .input-wrap textarea {
+.input-wrap input,
+.input-wrap textarea {
   border: 1px solid #908e8c;
   border-radius: 0.2rem;
   outline: none;
 }
 
-.input-wrap input:focus, .input-wrap textarea:focus {
+.input-wrap input:focus,
+.input-wrap textarea:focus {
   border: 1px solid #0071eb;
 }
 
@@ -115,7 +117,8 @@ h3 {
 }
 
 /* Navigation Bar */
-nav, main {
+nav,
+main {
   max-width: 1050px;
   margin: 0 auto;
 }
@@ -292,13 +295,15 @@ a:hover {
 }
 
 .discover-posts section article h3 {
-  color: #e50914;
+  text-transform: uppercase;
+  color: white;
   text-shadow: 0px 0px 10px red;
 }
 
 .discover-posts section article .author {
   color: #ff9a56;
   font-size: 1.4rem;
+  margin-bottom: 0.5rem;
 }
 
 .discover-posts section article:hover {
@@ -307,6 +312,7 @@ a:hover {
 
 .discover-posts section article:hover h3 {
   color: #0affeb;
+  text-shadow: 0px 0px 10px black;
 }
 
 .discover-posts section article:hover .author {
@@ -314,7 +320,7 @@ a:hover {
 }
 
 .discover-posts section article:hover p {
-  color: black;
+  text-shadow: 0px 0px 4px black;
 }
 
 .newblog {
